@@ -63,7 +63,7 @@ function logout(){
 	if(isset($_POST['logout'])){
 					 
 					 session_destroy();
-				 return header("Location: loginuniversal.php");
+				 return header("Location: login.php");
 					exit();
 					 }
 }
