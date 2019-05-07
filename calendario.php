@@ -42,7 +42,7 @@ logout();
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <?php include "LeftMenu.php " ?>
+    <?php include "LeftMenu.php"?>
 
     <div id="content-wrapper">
 
