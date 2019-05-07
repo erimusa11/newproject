@@ -1,6 +1,7 @@
 <?php
   
     
+	
 // the conection of database local host  where the datas are stored
  DEFINE ('DB_HOSTNAME', 'localhost');
  DEFINE ('DB_DATABASE', 'loginapp');
