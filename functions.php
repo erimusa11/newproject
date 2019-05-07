@@ -68,4 +68,25 @@ function logout(){
 					 }
 }
 
+
+
+//mission input ******************************************************************
+function missioninsert(){
+     
+    global $connection;
+    
+if (isset($_POST['save'])) {
+$mission = $_POST['mission'];
+if($mission==NULL){
+header("Location: mission.php");
+exit();    
+}
+         $user = $_SESSION['userid'];
+$query_mission="INSERT INTO user_missione(missione,userId) ";
+$query_mission .="VALUES('$mission','$user')";
+$result= mysqli_query($connection, $query_mission);
+ header("Location: mission.php");
+   }
+}
+
  ?>

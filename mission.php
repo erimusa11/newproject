@@ -8,7 +8,20 @@ if(!isset($_SESSION['log'])){
 logout();
 ?>
 
+<?php missioninsert(); ?>          <!--  call the function whitch add contect on the form  -->
 
+<?php
+
+if (isset($_GET['del'])) {
+	$id = $_GET['del'];
+        
+        global $connection;                  //is the php code wich you can delete  your content
+        
+	mysqli_query($connection, "DELETE FROM user_missione WHERE missioneId=$id");
+	header('location: mission.php');
+}
+
+?>
 
 
 <!DOCTYPE html>
@@ -42,7 +55,7 @@ logout();
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <?php include "LeftMenu.php " ?>
+    <?php include "LeftMenu.php"?>
 
     <div id="content-wrapper">
 
@@ -58,21 +71,60 @@ logout();
 
         <!-- Icon Cards-->
         <div class=" ">
-           
+        <form action="mission.php" method="POST">   
         <!-- DataTables Example -->
         <div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-pen"></i>
+            Cra  un Missione <input type="submit"  class=" btn btn-warning float-right
+ col-1"  name="save" value="Salva"></div>
+          <div class="card-body">
+            <div class="table-responsive">
+            
+                <textarea name="mission"  iid='output' cols="30" rows="5" class="form-control"> </textarea>
+            </form>
+            </div>
+            
+          </div>
+          
+          <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        </div>
+
+      </div>
+
+      <div class="card mb-3">
           <div class="card-header">
             <i class="fas fa-table"></i>
             Data Table Example</div>
           <div class="card-body">
             <div class="table-responsive">
-             
+            <table class="table table-striped table-dark">
+            <?php 
+                  global $connection;     $user = $_SESSION['userid'];
+	                 //the php  querry witch can show all the contect 
+                   $results = mysqli_query($connection, "SELECT * FROM user_missione WHERE userId='$user'"); ?>
+                  <?php while ($row = mysqli_fetch_array($results)) { ?>
+                
+
+
+           
+              <tr>
+                <td class ="col-10"> <?php echo $row['missione']; ?></td>
+                <td class="col-2"> <button class='btn btn-md btn-light btnSubmit'><a href="missione.php?del=<?php echo $row['missioneId']; ?>" class="del_btn"><font color="dark">Delete</font></a></button></td
+              </tr>
+                  <?php } ?>
+            </table>    
+
             </div>
+            
           </div>
+          
           <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
         </div>
 
       </div>
+
+      
       <!-- /.container-fluid -->
         <?php include "Footer.php"?> 
      
