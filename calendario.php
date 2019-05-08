@@ -32,6 +32,28 @@ logout();
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
+  
+  
+  
+  
+    <!---Calendar required scripts-->
+    <link rel="stylesheet" href="calendar/css/bootstrap.css">
+
+    <!---Jquery-->
+    <script src="calendar/js/jquery.min.js"></script>
+    <script src="calendar/js/moment.min.js"></script>
+
+    <!--- Full calendar -->
+    <link rel="stylesheet" href="calendar/css/fullcalendar.min.css">
+    <script src="calendar/js/fullcalendar.js"></script>
+    <script src="calendar/js/it.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    
+    <!--- Clock Picker -->
+    <script src="calendar/js/bootstrap-clockpicker.js"> </script>
+    <link rel="stylesheet" href="calendar/css/bootstrap-clockpicker.css">
+    
 
 </head>
 
@@ -65,8 +87,9 @@ logout();
             <i class="fas fa-table"></i>
             Data Table Example</div>
           <div class="card-body">
+          
             <div class="table-responsive">
-             
+              <?php include 'calendar/calendar.php'; ?>
             </div>
           </div>
           <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
@@ -97,26 +120,30 @@ logout();
     </div>
   </div>
 
+        </div>
+      </div>
+      </div>
+      
 
-  <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Bootstrap core JavaScript
+  <script src="vendor/jquery/jquery.min.js"></script> 
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>  -->
 
-  <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <!-- Core plugin JavaScript--> 
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script> 
 
-  <!-- Page level plugin JavaScript-->
+  <!-- Page level plugin JavaScript  -->
   <script src="vendor/chart.js/Chart.min.js"></script>
   <script src="vendor/datatables/jquery.dataTables.js"></script>
   <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
 
-  <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin.min.js"></script>
+  <!-- Custom scripts for all pages -->
+  <script src="js/sb-admin.min.js"></script> 
 
-  <!-- Demo scripts for this page-->
+  <!-- Demo scripts for this page -->
   <script src="js/demo/datatables-demo.js"></script>
-  <script src="js/demo/chart-area-demo.js"></script>
-
+  <script src="js/demo/chart-area-demo.js"></script>   
+        
 </body>
 
 </html>

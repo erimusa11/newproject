@@ -95,7 +95,7 @@ if (isset($_GET['del'])) {
       <div class="card mb-3">
           <div class="card-header">
             <i class="fas fa-table"></i>
-            Data Table Example</div>
+           Vizualiza i missioni</div>
           <div class="card-body">
             <div class="table-responsive">
             <table class="table table-striped table-dark">
@@ -110,7 +110,7 @@ if (isset($_GET['del'])) {
            
               <tr>
                 <td class ="col-10"> <?php echo $row['missione']; ?></td>
-                <td class="col-2"> <button class='btn btn-md btn-light btnSubmit'><a href="missione.php?del=<?php echo $row['missioneId']; ?>" class="del_btn"><font color="dark">Delete</font></a></button></td
+                <td class="col-2"> <button class='btn btn-md btn-light btnSubmit'><a href="mission.php?del=<?php echo $row['missioneId']; ?>" class="del_btn"><font color="dark">Delete</font></a></button></td
               </tr>
                   <?php } ?>
             </table>    

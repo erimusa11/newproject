@@ -8,6 +8,35 @@ if(!isset($_SESSION['log'])){
 logout();
 ?>
 
+<?php
+if (isset($_POST['save'])) {
+$obbiettivi = $_POST['obbiettivi'];
+$tipo=$_POST['myselectbox'];
+
+if(empty($obbiettivi)){
+header("Location: obbietivi.php");
+exit();
+}    
+    $user = $_SESSION['userid'];
+$query_obbiettivi="INSERT INTO obbiettivi_strategici(obbiettivi,obbiettiviTipo,userId) ";
+$query_obbiettivi .="VALUES('$obbiettivi','$tipo','$user')";
+
+
+$result= mysqli_query($connection, $query_obbiettivi);
+
+
+header("Location: obbietivi.php");
+
+}
+
+?>
+<?php
+if (isset($_GET['del'])) {
+	$id = $_GET['del'];
+	mysqli_query($connection, "DELETE FROM obbiettivi_strategici WHERE obbiettiviId=$id");
+	header('location: obbietivi.php');
+}
+?>
 
 
 
@@ -56,16 +85,177 @@ logout();
           <li class="breadcrumb-item active">Overview</li>
         </ol>
 
-        <!-- Icon Cards-->
-        <div class=" ">
+        <!-- the first row we have -->
+        <div class="container-fluid">
+        <div class=" row ">
            
         <!-- DataTables Example -->
-        <div class="card mb-3">
+        <div class="card mb-3 col-8 " style="padding-left: 0px;padding-right: 0px;" >
           <div class="card-header">
-            <i class="fas fa-table"></i>
-            Data Table Example</div>
+            <i class="fas fa-pen"></i>
+            Crea un Obbietivo</div>
+          <div class="card-body">        <!-- this is the text area-->
+            <div class="table-responsive">
+
+            <form method="post" action="obbietivi.php">
+                <textarea name="obbiettivi" id="" cols="30" rows="3" class="form-control"></textarea>
+            </div>
+          </div>
+          <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        </div>
+          <!-- here start the category and the save button -->
+        <div class="card mb-3 col-4" style="padding-left: 0px; padding-right: 0px;">
+          <div class="card-header">
+            <i class="fas fa-save"></i>
+            Scegli la categoria </div>
           <div class="card-body">
             <div class="table-responsive">
+             
+            <div  class="form-group">         <!--  the category-->
+                     <select class="custom-select"name="myselectbox">
+                       <option value="Finanziari" class="font-roman">Economica Finanziari</option>
+                         <option value="Soddisfazione del cliente" class="font-roman">Prespetiva del cliente</option>
+                             <option value="Operazioni interne">Prespetiva Praccisi</option>
+                               <option value="Individuali" class="font-roman">Prespetiva Formazione</option>
+                                  </select> 
+               </div>
+               <button class="btn bg-warning font-roman text-dark col " type="submit" name="save" >Save</button>
+              </form>
+            </div>
+          </div>
+          <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        </div>
+
+      </div> </div>
+          <!-- this is the output -->
+      <div class="">
+           
+        <!-- the first category-->
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-money-check-alt"></i>
+            Economica Finanziari</div>
+          <div class="card-body">
+            <div class="table-responsive">
+
+                                   <!-- the  query of firt select option -->
+            <?php                     
+                 $user = $_SESSION['userid'];
+                $results_f = mysqli_query($connection, "SELECT * FROM obbiettivi_strategici WHERE obbiettiviTipo='Finanziari' AND userId='$user'"); ?>
+
+            <table class="table table-striped table-dark">
+             
+                
+                <?php while ($row = mysqli_fetch_array($results_f)) { ?>
+
+           
+              <tr>                        <!-- the table where the first select show -->
+                <td class ="col-10"> <?php echo $row['obbiettivi']; ?></td>
+                <td class="col-2"> <button class='btn btn-md btn-light btnSubmit'><a href="obbietivi.php?del=<?php echo $row['obbiettiviId']; ?>" class="del_btn font-roman"><font color="dark">Delete</font></a> </button></td
+              </tr>
+                  <?php } ?>
+            </table>    
+            </div>
+          </div>
+          <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        </div>
+
+        <!-- the second category-->
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-user-tie""></i>
+            Prespetiva del cliente  </div>
+          <div class="card-body">
+            <div class="table-responsive">
+             
+                                         <!-- the second query -->
+             <?php 
+                                   $user = $_SESSION['userid'];
+                $results_s = mysqli_query($connection, "SELECT * FROM obbiettivi_strategici WHERE obbiettiviTipo='Soddisfazione del cliente' AND userId='$user'"); ?>
+
+
+            <table class="table table-striped table-dark">
+             
+                
+            <?php while ($row = mysqli_fetch_array($results_s)) { ?>
+
+                                                 <!-- the second  table elements-->
+              <tr>
+                <td class ="col-10"> <?php echo $row['obbiettivi']; ?></td>
+                <td class="col-2"> <button class='btn btn-md btn-light btnSubmit'><a href="obbietivi.php?del=<?php echo $row['obbiettiviId']; ?>" class="del_btn font-roman"><font color="dark">Delete</font></a></button></td>
+              </tr>
+                  <?php } ?>
+            </table>    
+
+
+
+            </div>
+          </div>
+          <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        </div>
+
+        <!-- the thirt category-->
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-route"></i>
+            Perspective precisi</div>
+          <div class="card-body">
+            <div class="table-responsive">
+
+            <?php 
+                                   $user = $_SESSION['userid'];
+             $results_i = mysqli_query($connection, "SELECT * FROM obbiettivi_strategici WHERE obbiettiviTipo='Operazioni interne' AND userId='$user'"); ?>
+
+
+
+            <table class="table table-striped table-dark">
+             
+                
+          	<?php while ($row = mysqli_fetch_array($results_i)) { ?>
+
+                                                 <!-- the second  table elements-->
+                 <tr>
+                <td class ="col-10"> <?php echo $row['obbiettivi']; ?></td>
+                <td class="col-2"> <button class='btn btn-md btn-light btnSubmit'><a href="obbietivi.php?del=<?php echo $row['obbiettiviId']; ?>" class="del_btn font-roman"><font color="dark">Delete</font></a></button></td>
+              </tr>
+                  <?php } ?>
+            </table>        
+
+
+             
+            </div>
+          </div>
+          <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        </div>
+
+        <!-- the forth category-->
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-sitemap"></i>
+            Prespetiva Formazione</div>
+          <div class="card-body">
+            <div class="table-responsive">
+              
+            <?php 
+                                   $user = $_SESSION['userid'];
+         $results_i = mysqli_query($connection, "SELECT * FROM obbiettivi_strategici WHERE obbiettiviTipo='Individuali' AND userId='$user'"); ?>
+
+
+
+
+            <table class="table table-striped table-dark">
+             
+                
+          	<?php while ($row = mysqli_fetch_array($results_i)) { ?>
+
+                                                 <!-- the second  table elements-->
+                 <tr>
+                <td class ="col-10"> <?php echo $row['obbiettivi']; ?></td>
+                <td class="col-2"> <button class='btn btn-md btn-light btnSubmit'><a href="obbietivi.php?del=<?php echo $row['obbiettiviId']; ?>" class="del_btn font-roman"><font color="dark">Delete</font></a></button></td>
+              </tr>
+                  <?php } ?>
+            </table>        
+
              
             </div>
           </div>
@@ -73,6 +263,10 @@ logout();
         </div>
 
       </div>
+
+        
+
+
       <!-- /.container-fluid -->
         <?php include "Footer.php"?> 
      
