@@ -47,7 +47,7 @@
                     left: 'today,prev,next,myCustomButton',
                     center: 'title',
                     right: 'month,basicweek,basicDay,agendaWeek,agendaDay'
-                },
+                } , selectable:true,  selectHelper:true,
               /*  customButtons: {
                     myCustomButton: {
                         text: 'custom!',
@@ -67,7 +67,7 @@
                     $('txtDate').val(date.format());
                     $('#eventModal').modal();
                 },
-               events: 'http://localhost/calendar/eventpdo.php',
+               events: 'http://localhost/newproject/calendar/eventpdo.php',
 
                 eventClick: function(calEvent,jsEvent,view){
                     
@@ -232,7 +232,7 @@
         function sendInformation(get,objEvent,modal){
             $.ajax({
                 type:'POST',
-                url: '/calendar/eventpdo.php?get='+get,
+                url: 'calendar/eventpdo.php?get='+get,
                 dataType : "json",
                 data: objEvent,
                 success: function(msg){

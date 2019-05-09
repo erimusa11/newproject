@@ -1,15 +1,16 @@
 <?php 
+session_start();
 header('Content-Type: application/json');
 
 
-$pdo = new PDO("mysql:dbname=calendar;host=localhost","root","");
-
+$pdo = new PDO("mysql:dbname=loginapp;host=localhost","root","");
+$user= $_SESSION['userid'];
 $get=(isset($_GET['get']))?$_GET['get']:'read';
 switch($get){
         
     case 'add':
-        
-        $query=$pdo->prepare("INSERT INTO events(title, description,color,textColor,start,end) VALUES(:title, :description,:color,:textColor,:start,:end)");
+       
+        $query=$pdo->prepare("INSERT INTO events(title, description,color,textColor,start,end) VALUES(:title, :description,:color,:textColor,:start,:end ,userId='$user')");
         
         $result=$query->execute(array(
         
@@ -71,7 +72,8 @@ switch($get){
         
         
     default:
-        $sql=$pdo->prepare("SELECT * FROM events");
+            
+        $sql=$pdo->prepare("SELECT * FROM events WHERE userId ='$user'");
         $sql->execute();
 
         $result=$sql->fetchAll(PDO::FETCH_ASSOC);

@@ -45,7 +45,19 @@ if (isset($_GET['del'])) {
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 
+
+<script>
+<script>
+$(document).ready(function(){
+    $(".btnSave").click(function(){
+        $("#success").modal("show");
+    });
+});
+</script>
+    
+    
 </head>
 
 <body id="page-top">
@@ -67,29 +79,41 @@ if (isset($_GET['del'])) {
             <a href="#">Mission</a>
           </li>
           <li class="breadcrumb-item active">Overview</li>
+          <li> <div id="success" class="alert alert-success alert-dismissible fade show hidden " role="alert"  hidden>
+  <strong>Item saved!</strong> 
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div></li>
+       <li> <div class="alert alert-danger alert-dismissible fade show hidden " role="alert" hidden >
+  <strong>Item deleted!</strong> 
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div></li>
         </ol>
 
         <!-- Icon Cards-->
         <div class=" ">
-        <form action="mission.php" method="POST">   
+        <form action="mission.php" method="POST" onsubmit="myFunction()">   
         <!-- DataTables Example -->
         <div class="card mb-3">
           <div class="card-header">
             <i class="fas fa-pen"></i>
-            Cra  un Missione <input type="submit"  class=" btn btn-warning float-right
+            Cra  un Missione <input type="submit" id="btnSave" class=" btn btn-warning float-right
  col-1"  name="save" value="Salva"></div>
           <div class="card-body">
             <div class="table-responsive">
             
                 <textarea name="mission"  iid='output' cols="30" rows="5" class="form-control"> </textarea>
-            </form>
+            
             </div>
             
           </div>
           
           <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
         </div>
-
+        </form>
       </div>
 
       <div class="card mb-3">
@@ -148,6 +172,22 @@ if (isset($_GET['del'])) {
       </div>
     </div>
   </div>
+  
+  
+  
+  
+  
+  
+  
+  <div class="modal" tabindex="-1" id="modal" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Event deleted</h5>
+      </div>
+    </div>
+  </div>
+</div>
 
 
   <!-- Bootstrap core JavaScript-->
