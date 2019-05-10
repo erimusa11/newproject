@@ -10,7 +10,7 @@ switch($get){
         
     case 'add':
        
-        $query=$pdo->prepare("INSERT INTO events(title, description,color,textColor,start,end) VALUES(:title, :description,:color,:textColor,:start,:end ,userId='$user')");
+        $query=$pdo->prepare("INSERT INTO events(title, description,color,textColor,start,end,userId) VALUES(:title, :description,:color,:textColor,:start,:end ,'$user')");
         
         $result=$query->execute(array(
         

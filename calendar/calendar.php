@@ -21,7 +21,9 @@
     
     <script src="js/bootstrap-clockpicker.js"> </script>
     <link rel="stylesheet" href="css/bootstrap-clockpicker.css">
-    
+    <script>
+ 
+    </script>
     
     <style>
         .fc th{
@@ -37,10 +39,30 @@
             background: #C9FFBF;
         }
         
+        .fc-state-default {
+            background: black;
+             border-color: black;
+            color: white;
+            padding: 5px 5px;
+  
+         text-align: center;
+             outline: none;
+             font-family: "Times New Roman", Times, serif;
+
+        }
+        .fc-state-default:active{
+    background:#9c9c9c;
+}
     
+      
     </style>
 
 <script>
+     
+ 
+
+
+
         $(document).ready(function() {
             $('#myCalendar').fullCalendar({
                 header: {
@@ -56,17 +78,28 @@
                         }
                     }
                 }, */
-
-                dayClick: function(date, jsEvent, view) {
+                    columnFormat:'dddd', 
                     
+
+                select: function(date, end, jsEvent, view ) {
+              
+                    $( "div.demo-container" ).html();
                     $('#btnAdd').prop('disabled',false);
                     $('#btnModify').prop('disabled',true);
                     $('#btnDelete').prop('disabled',true);
                     
                     emptyFormular();
-                    $('txtDate').val(date.format());
+                   
+                    $('#txtDate').val(moment(date).format('YYYY-MM-DD'))
+                  
+                    $('#txtDateEnd').val(moment(end).format('YYYY-MM-DD'));
                     $('#eventModal').modal();
-                },
+                },  
+
+                plugins: [ 'interaction', 'dayGrid', 'timeGrid' ],
+                timeZone: 'UTC',
+                editable: true,
+                eventLimit: true,
                events: 'http://localhost/newproject/calendar/eventpdo.php',
 
                 eventClick: function(calEvent,jsEvent,view){
@@ -88,6 +121,7 @@
                     
                     DayHour = calEvent.start._i.split("  ");
                      $('#txtDate').val(DayHour[0]);
+                     $('#txtDateEnd').val(DayHour[0])
                      
       
                     $('#eventModal').modal();
@@ -104,15 +138,22 @@
                     var dayHour = calEvent.start.format().split("T");
                     $('#txtDate').val(dayHour[0]);
                     $('#txtHour').val(dayHour[1]);
+                    $('#txtDateEnd').val(dayHour[0]);
+                    $('#txtHourEnd').val(dayHour[1]);
                     
                     
                     reuseFunction();
                     sendInformation('modify',newEvent,true); 
-                }
+                },eventResize: function(event,dayDelta,minuteDelta,revertFunc) { // si changement de longueur
+
+edit(event);
+
+}
             });
 
         });
-    </script>
+ 
+   </script>
 
  
 </head>
@@ -133,58 +174,69 @@
     <div class="modal fade" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="eventTitle"></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                
+               
                 <div class="modal-body">
                    <div id="eventDescription"></div>
                    
                    
-                    <div class="form-row">
-                    <div class="form-group col-md-4">
+                  <div class="form-row">
+                     <div class="form-group col-md-4" hidden>
                     <label for="txtID">ID:</label>
                     <input type="text" id="txtID" name="txtID" class="form-control"  placeholder="Event's ID">
                     </div>
-                    <div class="form-group col-md-8">
-                    <label for="txtTitle">Title:</label>
+                    <div class="form-group col-md-12">
+                    <label for="txtTitle">Titolo:</label>
                     <input type="text" id="txtTitle" class="form-control" placeholder="Event's Title"> 
                     </div>
                     </div>
           
                     <div class="form-row">
                     <div class="form-group col-md-8">
-                    <label for="txtDate">Date:</label>
+                    <label for="txtDate">Data Inizio:</label>
                     <input type="date" id="txtDate" name="txtDate" class="form-control" value=""/>
                     </div>
                     <div class="form-group col-md-4">
-                    <label for="txtHour">Hour:</label>
+                    <label for="txtHour">Ora inizio:</label>
                     <div class="input-group clockpicker" data-autoclose="true">
-                    <input type="time" id="txtHour" value="" class="form-control">
+                    <input type="time" id="txtHour" value="01:00:00" class="form-control">
                     </div>
                     </div>
                     </div>
                    
+
+                    <div class="form-row">
+                    <div class="form-group col-md-8">
+                    <label for="txtDateEnd">Data fine:</label>
+                    <input type="date" id="txtDateEnd" name="txtDateEnd" class="form-control" value=""/>
+                    </div>
+                    <div class="form-group col-md-4">
+                    <label for="txtHour">Ora fine:</label>
+                    <div class="input-group clockpicker" data-autoclose="true">
+                    <input type="time" id="txtHourEnd" value="23:59:00" class="form-control">
+                    </div>
+                    </div>
+                    </div>
+                   
+
+
+
                    
                     <div class="form-group">
-                    <label for="txtDescription">Description:</label>
+                    <label for="txtDescription">Descrizione:</label>
                     <textarea type="text" id="txtDescription" rows="5" class="form-control"> </textarea>
                     </div>
                     
                     <div class="form-group">
-                    <label for="txtColor">Color:</label>
+                    <label for="txtColor">Colore:</label>
                     <input type="color" id="txtColor" value="ff0000"  class="form-control" style="height:36"> <br/>
                     </div>
                 </div>
                 
                 <div class="modal-footer">
-                    <button type="button" id="btnAdd" class="btn btn-success">Add</button>
-                    <button type="button" id="btnModify" class="btn btn-secondary">Modify</button>
-                    <button type="button" id="btnDelete" class="btn btn-danger">Delete</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" id="btnAdd" class="btn btn-success">Crea Ecento</button>
+                    <button type="button" id="btnModify" class="btn btn-secondary">Modifica</button>
+                    <button type="button" id="btnDelete" class="btn btn-danger">Elimina</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Anula</button>
                 </div>
             </div>
         </div>
@@ -222,7 +274,7 @@
            color:$('#txtColor').val(),
            description:$('#txtDescription').val(),
            textColor:"#FFFFFF",
-           end:$('#txtDate').val()+" "+$('#txtHour').val()
+           end:$('#txtDateEnd').val()+" "+$('#txtHourEnd').val()
            
                 };
             

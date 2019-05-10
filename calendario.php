@@ -57,6 +57,24 @@ logout();
     <script src="calendar/js/bootstrap-clockpicker.js"> </script>
     <link rel="stylesheet" href="calendar/css/bootstrap-clockpicker.css">
     
+    <style>
+        .fc-toolbar,.fc-day-header {
+          text-transform: capitalize;
+          font-family: "Times New Roman", Times, serif;
+          }
+       .fc-sat { background-color:#c9ffbf73;  }
+
+       .fc-sun { color:red;  }
+
+       .fc-right .fc-prev-button, .fc-right .fc-next-button{
+    background-color: #b1d583;
+    background-image: none;
+}
+
+
+      
+ 
+    </style>
 
 </head>
 
@@ -87,8 +105,8 @@ logout();
         <!-- DataTables Example -->
         <div class="card mb-3">
           <div class="card-header">
-            <i class="fas fa-table"></i>
-            Data Table Example</div>
+            <i class="fas fa-calendar"></i>
+            La agenda</div>
           <div class="card-body">
           
             <div class="table-responsive">
