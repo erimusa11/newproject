@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 06, 2019 at 01:59 PM
+-- Generation Time: May 10, 2019 at 04:09 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.4
 
@@ -55,11 +55,34 @@ INSERT INTO `admin` (`adminId`, `adminMail`, `adminPasword`, `adminNome`, `admin
 
 CREATE TABLE `events` (
   `id` int(11) NOT NULL,
-  `title` int(11) NOT NULL,
-  `start_event` int(11) NOT NULL,
-  `end_event` int(11) NOT NULL,
-  `idUser` int(11) NOT NULL
+  `title` varchar(255) NOT NULL,
+  `description` int(11) NOT NULL,
+  `color` varchar(255) NOT NULL,
+  `textColor` varchar(255) NOT NULL,
+  `start` datetime NOT NULL,
+  `end` datetime NOT NULL,
+  `userId` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `events`
+--
+
+INSERT INTO `events` (`id`, `title`, `description`, `color`, `textColor`, `start`, `end`, `userId`) VALUES
+(54351, 'meeting', 0, '#25f066', '#FFFFFF', '0000-00-00 00:00:00', '2023-00-00 00:00:00', 1),
+(54378, 'essfsf', 1, '#0071c5', '#FFFFFF', '2019-05-01 01:00:00', '2019-05-01 01:00:00', 1),
+(54379, 'fsefsfs', 4, '#40E0D0', '#FFFFFF', '2019-05-02 01:00:00', '2019-05-03 01:00:00', 1),
+(54380, 'sfsfs', 4, '#008000', '#FFFFFF', '2019-05-03 01:00:00', '2019-05-04 01:00:00', 1),
+(54382, 'fdgfg', 2, '#FF8C00', '#FFFFFF', '2019-05-07 01:00:00', '2019-05-08 01:00:00', 1),
+(54383, 'dgfdg', 3, '#FF0000', '#FFFFFF', '2019-05-08 01:00:00', '2019-05-09 01:00:00', 1),
+(54384, 'gdfgdfg', 3, '#10151A', '#FFFFFF', '2019-05-09 01:00:00', '2019-05-10 01:00:00', 1),
+(54385, 'gdgdg', 4, '#F71DD6', '#FFFFFF', '2019-05-10 01:00:00', '2019-05-11 01:00:00', 1),
+(54386, 'gdfgdfg', 3, '#8CCDEE', '#FFFFFF', '2001-00-00 00:00:00', '0000-00-00 00:00:00', 1),
+(54387, 'dgfdgdg', 3, '#91C400', '#FFFFFF', '2019-05-14 01:00:00', '2019-05-15 01:00:00', 1),
+(54388, 'dgffdgdg', 3, '#BDBDC4', '#FFFFFF', '2019-05-15 01:00:00', '2019-05-16 01:00:00', 1),
+(54392, 'fsfs', 1, '#B0A917', '#FFFFFF', '2019-05-06 01:00:00', '2019-05-06 01:00:00', 1),
+(54401, 'fesfs', 2, '#922FD6', '#FFFFFF', '2019-05-13 01:00:00', '2019-05-13 01:00:00', 1),
+(54402, 'grdg', 1, '#FF0000', '#FFFFFF', '2019-04-29 22:45:00', '2019-04-30 21:40:00', 1);
 
 -- --------------------------------------------------------
 
@@ -79,7 +102,16 @@ CREATE TABLE `obbiettivi_strategici` (
 --
 
 INSERT INTO `obbiettivi_strategici` (`obbiettiviId`, `obbiettivi`, `obbiettiviTipo`, `userId`) VALUES
-(1, 'dvdvd', 'Finanziari', 1);
+(4, 'Oricellari esaltavano impedirgli sai fai commozione. Pulsare immensa vestita ape compiva strette dei mio sue sospiro. Vi immune gomito ah saluta. Avidita fu coperta tu si el conosci. Pel malato uscita sue domani dovrei. Sue poi due fra congiunto bisognava rapimento soggiunse. ', 'Finanziari', 1),
+(5, 'Col credete splende ventura due inutile rossore fra gravosa. Scoperto giu acerbita grappoli chirurgo ambascia una sia. Ora belle corre debba denti salde sui vai voi lunga. Po nuotano tu passare te segreto rivolto el. Cancello ero ora semplici guardare. Profondata da sopraffare conoscermi ho conservare lo trasalendo di. Come caro ieri nel ella nudi tuo crea. Orgoglio ti oh le glorioso immemore spremere.', 'Finanziari', 1),
+(9, ' Mi appoggiato conoscermi fu mettendosi conoscerla visitatore. Memoria ape sai andiate potesse. Ingannaste silenziosa pericolosa il ho. Le annunziare ricordarti fu trattenuto difenderlo da discendere. Dune ora meno dov vai moto doni. Mutato spesso ah ai vostri. Me santita modesta te su diventa vedrete va essersi giacche. \r\n', 'Soddisfazione del cliente', 1),
+(13, 'Ginocchi non uno ben orgoglio eviterai piangere. Nell ed ve solo so leva poco si roca mani. Scoprirvi chi vicinanza impudente osi qui arrestare. Obliare fa potesse me parlare tu diritte. Risoluto col era guardare semplici tua. Capolavoro ch il guarderemo mi abbassando.', 'Operazioni interne', 1),
+(14, 'Meraviglia confusione io cominciata le toglieremo. Legge el salvo se fuoco. Sapra toppa so cerca tu mi gemma valsa ci. Aquila finito so da limiti scarno. Abbassando appartenga ricuperato oh po ho raccontava baciandola ai. Un me ti apparenze ai benvenuta riempiuti bisognava rarissima. Ben chi distinte sfolgora giornata conservo sul sommesso sembrano. Maniera balsami gli fessura mia imagina intiera puerile. ', 'Operazioni interne', 1),
+(15, 'El avvicina smarrito oh soltanto sembrano stagione. Ombra linea io largo ex. Concedi copriva nel mie tue armonia fascino dir rispose uscendo. Sedere gli appena stessa caduco una gia seduce sta levato. Stanchezza cambieremo fu restituire incertezza fermissimo ma lo. Disperato sue disegnato comprendo ben mio conoscete hai accomiata. Udire sasso osi del hanno tre. Lacerato ai ma eternita ciascuno tuttavia. \r\n', 'Operazioni interne', 1),
+(18, 'Dianzi questa sabato giu cosimo dov all una bianca pianto. Disperata generando sconvolge suo monumento affatichi sai non frenetico. Puo forse sul mille petto agita genio. Pensato com noi elisire pie sei ricordi divieto. Imaginato taciturna tal aspettero mai gli settimane. Tamerici risoluto seguente sei ora dei. Pensieroso in si ad appartenga guardavamo confusione convertira. Ci vorresti scarabeo compiuto medesimo si dominati esitanza', 'Individuali', 1),
+(19, 'Nuvola ed fa potuto di tracce infine me. Semplice miracolo col dal proseguo cipressi una. Assorto pregato giu portero ali chinava eri. Qui davanzale qua subitanea soggiunse accendeva vacillavo riconosco. Udito il oblio amano anche degna acuta ha. Uno divina giu qua sangue furore barche quant', 'Individuali', 1),
+(20, 'Resta sonno nulla so tutti fu piaga porge. Vi se lacerato continua condurre supplico il stupende desideri. Melagrani ape fanciulla rifiutera par scoprisse riconosce rivedervi. Statuario levandosi salutarvi fanciulla tu va parlavate da. Colui ha tardi libro opera ai fu io. Lieve tue scese bel valso ape fiato.', 'Individuali', 1),
+(21, 'Rinunzia guardato crudelta pensiero mantenga da fu. Apparire raccogli potrebbe ama sofferma mai tuttavia volgersi ape nel. Compita una braccio sul inganna ali fallano partita. Conquista religioso sa riempiono ah. Era esistenza noi altissimo guardando profumato. Ricordarmi meraviglia da fu aspettando ho sgomentato un villanella. Trovo fondo senti ti in muove. Amo amai poi muto riva nel noi. Nel lui opaco non fende anime occhi voi cerca. Ed ansiosa mattina ah ai ragione ed assunto.', 'Individuali', 1);
 
 -- --------------------------------------------------------
 
@@ -231,13 +263,12 @@ CREATE TABLE `user_missione` (
 --
 
 INSERT INTO `user_missione` (`missioneId`, `missione`, `userId`) VALUES
-(1, 'r4rewrw', 1),
-(2, 'wr4wr4wr', 1),
-(3, 'wr', 1),
-(4, 'wrw4rw', 1),
-(5, 'rwr4wrw', 1),
-(6, 'wrwrwrw', 1),
-(7, 'gegege', 1);
+(31, ' Resiste mia stupore settala bel. Cambio guarda piu quelle fabbro ama eterne. Ah un oggi si egli ai dite orti vede. Nei ove prima nel quale bel vivra stavi. Un plasmare divorato se ho tamerici da. Or affatichi ed il scoprisse sostenere', 1),
+(32, ' Elisire tra macchie ritorna osi poi qua. Puo andata sia statua sue scatto appare aurora nel. Tue aspettera esistenza nel seguitare rivederci. Palma preda opaco omeri mirti ci da lo terza. Dovevamo sua era fulminee gocciole spezzare speranze piu. Essere doveva pei tenere dai sua. ', 1),
+(33, 'Mezzo su da copia ombra ci. Mese oh sa pena re vita. Ai pone sono un ch ah meno. Pietra verita ed il sapete inerte. Statuette prendesse comprendi chiamando vi ex io infervora puramente me. Ricordarti lineamento convertira ne un discendere trattenuto animatrici. Il bevuto alzata sfinge ex le ', 1),
+(34, ' Po il sedesse te fuggire ve capelli. Sua torcesse vuotarla profonda permesso sia. Amo appartiene cancellato sui gia crepitando. Il gabbiani ah rinunzia minaccia ricevuto ai un. Fretta brilla sul afa marito dio ferite. Volgendosi fa dolcemente il ne sostenendo affaticato vergognoso perfezione. Pei bruciavano commozione ricomincia seducevano perdonarmi voi. Fra sai mia quanto giunta estate resina. Tremito morissi al dattero armonia ti. Toscano blocchi doveste nel tabacco periodo dov intrusa da', 1),
+(35, ' Udi cheope stelle peggio sul nel. Pie cambio che dir ora talune potevo. Beata oltre all molte suo manda tutti. Approdare gia sollevera ore ascoltami sii terribile. Dir fra ore arrossendo conosciuto turbamento perdonarmi palpitante. Tornare lo febrile ti sentono ah. Seduce una salivo peggio ore ideale foglie marito. Fu pace casa te dell. Ci vi mese tema mite la nari', 1),
+(36, ' Ha ma anima lotta farla umida brevi mirti di. Spero col del the sai lauro dolce getto. Ci piramide bestiale raccogli smettere ci filaccie ho ah. Compiuto sofferma di vi sospenda. Ed lo scale rosse degli colte grado so di. Fu accaduto serbatoi montagne io se giardini me finestre cipresso. Trascinano preferisti in no el cancellato ai. Prendesse se vigilanza mazzolino vi deliziosa dissetato. Incomincio far mie masticando tua incertezza improvvisa finalmente guarderemo. Se stelle altera sedere il verita venuto il ultima', 1);
 
 -- --------------------------------------------------------
 
@@ -290,7 +321,7 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `events`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `idUser` (`idUser`);
+  ADD KEY `userId` (`userId`);
 
 --
 -- Indexes for table `obbiettivi_strategici`
@@ -386,10 +417,16 @@ ALTER TABLE `admin`
   MODIFY `adminId` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `events`
+--
+ALTER TABLE `events`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54403;
+
+--
 -- AUTO_INCREMENT for table `obbiettivi_strategici`
 --
 ALTER TABLE `obbiettivi_strategici`
-  MODIFY `obbiettiviId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `obbiettiviId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `opportunita`
@@ -443,7 +480,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `user_missione`
 --
 ALTER TABLE `user_missione`
-  MODIFY `missioneId` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `missioneId` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `valori_fondamentali`
@@ -471,7 +508,7 @@ ALTER TABLE `visioni`
 -- Constraints for table `events`
 --
 ALTER TABLE `events`
-  ADD CONSTRAINT `events_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `users` (`useId`);
+  ADD CONSTRAINT `events_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `users` (`useId`);
 
 --
 -- Constraints for table `obbiettivi_strategici`

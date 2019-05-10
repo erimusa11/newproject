@@ -80,7 +80,7 @@
                         }
                     }
                 }, */
-                    columnFormat:'dddd', 
+                    columnFormat:'dddd',  slotDuration: '00:05:00',
                     
 
                 select: function(date, end, jsEvent, view ) {
@@ -96,13 +96,14 @@
                   
                     $('#txtDateEnd').val(moment(end).format('YYYY-MM-DD'));
                     $('#eventModal').modal();
-                },  
+                },   
 
                 plugins: [ 'interaction', 'dayGrid', 'timeGrid' ],
                 timeZone: 'UTC',
-                editable: true,
+               editable: true,
                 eventLimit: true,
-               events: 'http://localhost/newproject/calendar/eventpdo.php',
+               
+               events: 'http://localhost/newproject/calendar/eventpdo.php', 
 
                 eventClick: function(calEvent,jsEvent,view){
                     
@@ -129,7 +130,7 @@
                     $('#eventModal').modal();
                 },
                 
-                editable: true,
+                
                 eventDrop: function(calEvent){
                     $('#txtID').val(calEvent.id);
                     $('#txtTitle').val(calEvent.title);
@@ -186,9 +187,15 @@ edit(event);
                     <label for="txtID">ID:</label>
                     <input type="text" id="txtID" name="txtID" class="form-control"  placeholder="Event's ID">
                     </div>
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-md-8">
                     <label for="txtTitle">Titolo:</label>
                     <input type="text" id="txtTitle" class="form-control" placeholder="Event's Title"> 
+                    </div>
+                    <div class="form-group col-md-4">
+                    <label for="txtDescription">Quantita</label>
+                    <div class="input-group " >
+                    <input type="number" id="txtDescription" min="0" class="form-control">
+                    </div>
                     </div>
                     </div>
           
@@ -200,7 +207,7 @@ edit(event);
                     <div class="form-group col-md-4">
                     <label for="txtHour">Ora inizio:</label>
                     <div class="input-group clockpicker" data-autoclose="true">
-                    <input type="time" id="txtHour" value="01:00:00" class="form-control">
+                    <input type="time" id="txtHour" value="08:00:00" min="8:00" max="16:00" class="form-control">
                     </div>
                     </div>
                     </div>
@@ -214,23 +221,36 @@ edit(event);
                     <div class="form-group col-md-4">
                     <label for="txtHour">Ora fine:</label>
                     <div class="input-group clockpicker" data-autoclose="true">
-                    <input type="time" id="txtHourEnd" value="23:59:00" class="form-control">
+                    <input type="time" id="txtHourEnd" value="16:00:00" min="8:00" max="16:00" class="form-control">
                     </div>
                     </div>
                     </div>
-                   
-
-
-
-                   
-                    <div class="form-group">
+            
+            <!--  <div class="form-group">
                     <label for="txtDescription">Descrizione:</label>
                     <textarea type="text" id="txtDescription" rows="5" class="form-control"> </textarea>
-                    </div>
+                    </div>-->
                     
                     <div class="form-group">
                     <label for="txtColor">Colore:</label>
-                    <input type="color" id="txtColor" value="ff0000"  class="form-control" style="height:36"> <br/>
+                    <!--  <input type="color" id="txtColor" value="ff0000"  class="form-control" style="height:36"> -->
+
+                    <select name="color" class="form-control" id="txtColor">
+						  <option value="">Choose</option>
+						  <option value="#0071c5"> Telefonate</option>
+						  <option value="#40E0D0"> Visite</option>
+						  <option value="#008000"> Azioni sui social</option>						  
+						  <option value="#B0A917"> Email</option>
+						  <option value="#FF8C00"> Consulenza</option>
+						  <option value="#FF0000"> Degustazione gratuita,</option>
+						  <option value="#10151A">Invio campioni gratuiti</option>
+                          <option value="#F71DD6">Novi contatti</option>
+                          <option value="#922FD6">Referenze</option>
+                          <option value="#7CBDDE">Testimonianze</option>
+                          <option value="#BDBDC4">Demo gratuite</option>
+						  
+						</select>
+                    <br/>
                     </div>
                 </div>
                 
