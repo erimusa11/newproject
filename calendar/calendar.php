@@ -51,9 +51,11 @@
 
         }
         .fc-state-default:active{
+    background:#777474;
+}
+.fc-state-default:hover{
     background:#9c9c9c;
 }
-    
       
     </style>
 
