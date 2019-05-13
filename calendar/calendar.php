@@ -71,7 +71,7 @@
                     left: 'today,prev,next,myCustomButton',
                     center: 'title',
                     right: 'month,basicweek,basicDay,agendaWeek,agendaDay'
-                } , selectable:true,  selectHelper:true,
+                } , selectable:true, // selectHelper:true,
               /*  customButtons: {
                     myCustomButton: {
                         text: 'custom!',
@@ -92,20 +92,21 @@
                     
                     emptyFormular();
                    
-                    $('#txtDate').val(moment(date).format('YYYY-MM-DD'))
-                  
+                    $('#txtDate').val(moment(date).format('YYYY-MM-DD'));
+                    
                     $('#txtDateEnd').val(moment(end).format('YYYY-MM-DD'));
                     $('#eventModal').modal();
                 },   
+       
 
-                plugins: [ 'interaction', 'dayGrid', 'timeGrid' ],
+               // plugins: [ 'interaction', 'dayGrid', 'timeGrid' ],
                 timeZone: 'UTC',
-               editable: true,
+              // editable: true,
                 eventLimit: true,
                
                events: 'http://localhost/newproject/calendar/eventpdo.php', 
 
-                eventClick: function(calEvent,jsEvent,view){
+                eventClick: function(end,calEvent,jsEvent,view){
                     
                     $('#btnAdd').prop('disabled',true);
                     $('#btnModify').prop('disabled',false);
@@ -124,11 +125,11 @@
                     
                     DayHour = calEvent.start._i.split("  ");
                      $('#txtDate').val(DayHour[0]);
-                     $('#txtDateEnd').val(DayHour[0])
+                     $('#txtDateEnd').val(DayHour[1])
                      
       
                     $('#eventModal').modal();
-                },
+                }, 
                 
                 
                 eventDrop: function(calEvent){
@@ -207,7 +208,7 @@ edit(event);
                     <div class="form-group col-md-4">
                     <label for="txtHour">Ora inizio:</label>
                     <div class="input-group clockpicker" data-autoclose="true">
-                    <input type="time" id="txtHour" value="08:00:00" min="8:00" max="16:00" class="form-control">
+                    <input type="time" id="txtHour"   class="form-control">
                     </div>
                     </div>
                     </div>
@@ -221,7 +222,7 @@ edit(event);
                     <div class="form-group col-md-4">
                     <label for="txtHour">Ora fine:</label>
                     <div class="input-group clockpicker" data-autoclose="true">
-                    <input type="time" id="txtHourEnd" value="16:00:00" min="8:00" max="16:00" class="form-control">
+                    <input type="time" id="txtHourEnd" value=""  class="form-control">
                     </div>
                     </div>
                     </div>
@@ -332,6 +333,8 @@ edit(event);
              $('#txtColor').val('');
              $('#txtDescription').val('');
              $('#txtID').val('');
+             $('#txtHourEnd').val('');
+             $('#txtHour').val('');
             
         }
         

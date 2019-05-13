@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 10, 2019 at 04:09 PM
+-- Generation Time: May 13, 2019 at 02:08 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.4
 
@@ -59,6 +59,7 @@ CREATE TABLE `events` (
   `description` int(11) NOT NULL,
   `color` varchar(255) NOT NULL,
   `textColor` varchar(255) NOT NULL,
+  `eventCategory` varchar(130) NOT NULL,
   `start` datetime NOT NULL,
   `end` datetime NOT NULL,
   `userId` int(50) NOT NULL
@@ -68,21 +69,15 @@ CREATE TABLE `events` (
 -- Dumping data for table `events`
 --
 
-INSERT INTO `events` (`id`, `title`, `description`, `color`, `textColor`, `start`, `end`, `userId`) VALUES
-(54351, 'meeting', 0, '#25f066', '#FFFFFF', '0000-00-00 00:00:00', '2023-00-00 00:00:00', 1),
-(54378, 'essfsf', 1, '#0071c5', '#FFFFFF', '2019-05-01 01:00:00', '2019-05-01 01:00:00', 1),
-(54379, 'fsefsfs', 4, '#40E0D0', '#FFFFFF', '2019-05-02 01:00:00', '2019-05-03 01:00:00', 1),
-(54380, 'sfsfs', 4, '#008000', '#FFFFFF', '2019-05-03 01:00:00', '2019-05-04 01:00:00', 1),
-(54382, 'fdgfg', 2, '#FF8C00', '#FFFFFF', '2019-05-07 01:00:00', '2019-05-08 01:00:00', 1),
-(54383, 'dgfdg', 3, '#FF0000', '#FFFFFF', '2019-05-08 01:00:00', '2019-05-09 01:00:00', 1),
-(54384, 'gdfgdfg', 3, '#10151A', '#FFFFFF', '2019-05-09 01:00:00', '2019-05-10 01:00:00', 1),
-(54385, 'gdgdg', 4, '#F71DD6', '#FFFFFF', '2019-05-10 01:00:00', '2019-05-11 01:00:00', 1),
-(54386, 'gdfgdfg', 3, '#8CCDEE', '#FFFFFF', '2001-00-00 00:00:00', '0000-00-00 00:00:00', 1),
-(54387, 'dgfdgdg', 3, '#91C400', '#FFFFFF', '2019-05-14 01:00:00', '2019-05-15 01:00:00', 1),
-(54388, 'dgffdgdg', 3, '#BDBDC4', '#FFFFFF', '2019-05-15 01:00:00', '2019-05-16 01:00:00', 1),
-(54392, 'fsfs', 1, '#B0A917', '#FFFFFF', '2019-05-06 01:00:00', '2019-05-06 01:00:00', 1),
-(54401, 'fesfs', 2, '#922FD6', '#FFFFFF', '2019-05-13 01:00:00', '2019-05-13 01:00:00', 1),
-(54402, 'grdg', 1, '#FF0000', '#FFFFFF', '2019-04-29 22:45:00', '2019-04-30 21:40:00', 1);
+INSERT INTO `events` (`id`, `title`, `description`, `color`, `textColor`, `eventCategory`, `start`, `end`, `userId`) VALUES
+(54411, 'fdsdfa', 2, '#0071c5', '#FFFFFF', 'Telefonate ', '2019-05-01 08:00:00', '2019-05-01 08:00:00', 1),
+(54412, 'ggdgdg', 1, '#40E0D0', '#FFFFFF', 'Visite ', '2019-05-01 08:00:00', '2019-05-01 08:00:00', 1),
+(54413, 'fsfsf', 2, '#922FD6', '#FFFFFF', 'Degustazione gratuita ', '2008-00-00 00:00:00', '2016-00-00 00:00:00', 1),
+(54414, 'fesfs', 1, '#F71DD6', '#FFFFFF', 'Degustazione gratuita ', '2019-05-01 08:00:00', '2019-05-01 08:00:00', 1),
+(54415, 'fsfs', 3, '#BDBDC4', '#FFFFFF', 'Demo gratuite ', '2019-05-01 08:00:00', '2019-05-01 08:00:00', 1),
+(54416, 'esfsfs', 3, '#7CBDDE', '#FFFFFF', 'Testimonianze ', '2019-05-01 08:00:00', '2019-05-01 08:00:00', 1),
+(54417, 'fesfsf', 4, '#7CBDDE', '#FFFFFF', 'Testimonianze ', '2019-05-08 08:00:00', '2019-05-08 08:00:00', 1),
+(54418, 'wdad', 1, '#B0A917', '#FFFFFF', 'Email ', '2019-05-14 08:00:00', '2019-05-18 08:00:00', 1);
 
 -- --------------------------------------------------------
 
@@ -420,7 +415,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54403;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54419;
 
 --
 -- AUTO_INCREMENT for table `obbiettivi_strategici`
